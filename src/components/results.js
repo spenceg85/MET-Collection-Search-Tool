@@ -12,6 +12,8 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+// styling using hooks
+
 
 const useStyles = makeStyles((theme) => ({
   root: {

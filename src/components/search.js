@@ -5,14 +5,16 @@ import { Paper, FormControl, Button } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 
+// styling using hooks
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      "@media (max-width: 767px)": {
+      "@media (max-width: 905px)": {
         width: '95%'
       },
-      "@media (min-width: 767px)": {
+      "@media (min-width: 905px)": {
         width: '70%'
       }
     },
@@ -27,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
         color: 'black',
         backgroundColor: 'gray',
         },
-        "@media (max-width: 767px)": {
+        "@media (max-width: 905px)": {
             width: '95%'
           },
-          "@media (min-width: 767px)": {
+          "@media (min-width: 905px)": {
             float: 'right'
           }
     }
