@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
         color: 'black',
         backgroundColor: 'gray',
+        }
     }
-}
 }));
 
 export default function SearchField(props) {
@@ -30,10 +30,10 @@ export default function SearchField(props) {
   return (
       <Grid container className={classes.grid} direction="row" >
            <Grid item xs={12}>
-        <Paper className={classes.paper}>
-    <form className={classes.root} noValidate autoComplete="off" htmlFor='outlined-basic' onSubmit={(e) => e.preventDefault}>
+        <Paper >
+    <form className={classes.root} action="#" noValidate autoComplete="off" htmlFor='search-button' onSubmit={(e) => {props.handleSearch(); e.preventDefault()}}>
       <TextField id="outlined-basic" label="Search NPM" variant="outlined" onChange={(e) => props.searchTerm(e)} />
-      <Button variant="contained" className={classes.search} >
+      <Button variant="contained" id="search-button" className={classes.search} onClick={(e) => {props.handleSearch()}} >
         Search
         </Button>
     </form>
