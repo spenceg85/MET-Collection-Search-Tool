@@ -13,10 +13,9 @@ const getData = (url) => {
             return response.clone().json();
         }
         else {
+            console.log(response)
             throw new Error(response.statusText);
         }
-    }).catch(error => {
-        alert(error.message);
-    });
+    })
 }
 export default getData;

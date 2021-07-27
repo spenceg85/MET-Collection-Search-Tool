@@ -91,9 +91,10 @@ export default function SearchResults(props) {
                 className={classes.inline}
               >
                 <p>{result.package.description}</p>
-                <p>{result.package.keywords && result.package.keywords.length > 0 ? result.package.keywords.map((keyword) => (mapChips(keyword))) : ''}</p>
                 {<strong>{result.package.publisher.username}</strong>}{' '}
+                {/* extras */}
                 <span>{result.score.detail ? mapScores(result.score.detail) : ''}</span>
+                <p>{result.package.keywords && result.package.keywords.length > 0 ? result.package.keywords.map((keyword) => (mapChips(keyword))) : ''}</p>
               </Typography>
               published {result.package.version}  <FiberManualRecordIcon className={classes.dotIcon} />  {result.package.date.split('-')[0]}
             </React.Fragment>
@@ -116,7 +117,7 @@ export default function SearchResults(props) {
         const maintenanceScore = detail.maintenance * 10;
         const popularityScore = detail.popularity * 10;
         const qualityScore = detail.quality * 10;
-        // color="primary"
+
         return (
             <div className={classes.scores}>
             p<LinearProgress className={classes.popularity} color="primary" variant="determinate" value={popularityScore} />
