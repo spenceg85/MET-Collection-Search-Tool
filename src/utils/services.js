@@ -13,7 +13,6 @@ const getData = (url) => {
             return response.clone().json();
         }
         else {
-            console.log(response)
             throw new Error(response.statusText);
         }
     })
