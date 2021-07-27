@@ -13,7 +13,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 // styling using hooks
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: '10px',
