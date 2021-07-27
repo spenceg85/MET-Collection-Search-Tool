@@ -28,12 +28,19 @@ const App = () => {
 
   const handleSearch = () => {
     // check if user entered a search string, if not prompt for one, politely
+
     if(queryString) {
+      
     //clear results
+    
     setSearchResults([]);
+
     // set loading true
+
     setLoading(true);
+
     // define url
+
     const url = `https://api.npms.io/v2/search/suggestions?q=${queryString}`;
     getData(url).then(handlErrors)
     .then((json) => {
