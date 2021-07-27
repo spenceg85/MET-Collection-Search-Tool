@@ -1,18 +1,15 @@
-
 const getData = (url) => {
     return fetch(
-        url,
-        {
+        url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         }
     ).then(response => {
-        if(response.ok) {
+        if (response.ok) {
             return response.clone().json();
-        }
-        else {
+        } else {
             throw new Error(response.statusText);
         }
     })
