@@ -42,13 +42,13 @@ const App = () => {
     // define url
 
     const url = `https://api.npms.io/v2/search/suggestions?q=${queryString}`;
-    getData(url).then(handlErrors)
+    getData(url)
+    .then(handlErrors)
     .then((json) => {
       setSearchResults(json);
       setLoading(false);
     }).catch(error => {
-      alert('Unable to load search results: ' + error.statusText);
-      console.log(error)
+      alert(error);
       setLoading(false);
   });
     } else {
@@ -56,11 +56,14 @@ const App = () => {
     }
   }
 
-  // lets handle those errors
+  // lets handle those errors - cleaner error handling (that actually works)
 
   const handlErrors = (response) => {
-     if(!response.ok && throwMe) throw Error('Unable to load search results: ' + response.statusText);
-    return response;
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error('Unable to load search results: code ' + response.status + response.statusText);
+    }
   }
   
     return (
