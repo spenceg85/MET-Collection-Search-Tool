@@ -45,8 +45,12 @@ const App = () => {
     getData(url)
     .then(handlErrors)
     .then((json) => {
-      setSearchResults(json);
-      setLoading(false);
+      if(json && json.length > 0) {
+        setSearchResults(json);
+        setLoading(false);
+      } else {
+        alert('No packages found for this search criteria: ' + queryString);
+      }
     }).catch(error => {
       alert(error);
       setLoading(false);
