@@ -63,7 +63,7 @@ const App = () => {
   // lets handle those errors - cleaner error handling (that actually works)
 
   const handlErrors = (response) => {
-    if (response.ok) {
+    if (!throwMe && response.ok) {
       return response.json();
     } else {
       throw Error('Unable to load search results: code ' + response.status + response.statusText);
