@@ -50,6 +50,7 @@ const App = () => {
         setLoading(false);
       } else {
         alert('No packages found for this search criteria: ' + queryString);
+        setLoading(false);
       }
     }).catch(error => {
       alert(error);
