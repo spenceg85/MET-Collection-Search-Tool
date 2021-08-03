@@ -75,7 +75,6 @@ export default function SearchResults(props) {
 
     // function called on map over results to return list elements
   const getListFromResults = (result, index) => {
-    console.log(result)
     return (
         <div key={result.package.name}>
         <ListItem alignItems="flex-start">
