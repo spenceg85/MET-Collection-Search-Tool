@@ -18,9 +18,9 @@ const App = () => {
     setQueryString(e.target.value)
     }
 
-    // set throw error boolean true/false checkbox
+  // set throw error boolean true/false checkbox
 
-    const handleChange = (event) => {
+  const handleChange = (event) => {
       setThrowMe(event.target.checked);
     };
 
@@ -41,7 +41,7 @@ const App = () => {
 
     // define url
 
-    const url = `https://api.npms.io/v2/search/suggestions?q=${queryString}`;
+  const url = `https://api.npms.io/v2/search/suggestions?q=${queryString}`;
     getData(url)
     .then(handlErrors)
     .then((json) => {
