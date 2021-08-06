@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SearchResults(props) {
-  const classes = useStyles()
+  const classes = useStyles();
   const [results, setResults] = useState([])
 
   // hook to listen for changes in results prop, makes sure to re-render
@@ -105,8 +105,7 @@ export default function SearchResults(props) {
                   {/* extras */}
                   <span>
                     {result.score.detail
-                      ? mapScores(result.score.detail)
-                      : ''}
+                      && mapScores(result.score.detail)}
                   </span>
                   <p>
                     {result.package.keywords &&
