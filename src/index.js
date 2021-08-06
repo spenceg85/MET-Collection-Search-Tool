@@ -27,9 +27,11 @@ const App = () => {
   // make npm API call
 
   const handleSearch = () => {
+    
     // check if user entered a search string, if not prompt for one, politely
 
     if (queryString) {
+
       //clear results
 
       setSearchResults([])
