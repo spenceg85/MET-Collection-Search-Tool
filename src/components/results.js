@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export default function SearchResults(props) {
-  const classes = useStyles();
+  const classes = useStyles()
   const [results, setResults] = useState([])
 
   // hook to listen for changes in results prop, makes sure to re-render
@@ -104,16 +104,15 @@ export default function SearchResults(props) {
                   }{' '}
                   {/* extras */}
                   <span>
-                    {result.score.detail
-                      && mapScores(result.score.detail)}
+                    {result.score.detail &&
+                      mapScores(result.score.detail)}
                   </span>
                   <p>
                     {result.package.keywords &&
-                    result.package.keywords.length > 0
-                      ? result.package.keywords.map(
-                          keyword => mapChips(keyword)
-                        )
-                      : ''}
+                      result.package.keywords.length > 0 &&
+                      result.package.keywords.map(keyword =>
+                        mapChips(keyword)
+                      )}
                   </p>
                 </Typography>
                 published {result.package.version}{' '}
