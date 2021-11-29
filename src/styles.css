@@ -2,3 +2,12 @@
   font-family: sans-serif;
   /* text-align: center; */
 }
+
+a, a:active {
+  color: inherit;
+  text-decoration: none;
+ }
+
+ a:hover {
+   color: black;
+ }

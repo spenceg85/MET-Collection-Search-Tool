@@ -62,7 +62,7 @@ export default function SearchField(props) {
           >
             <TextField
               id="outlined-basic"
-              label="Search NPM"
+              label="Search MET Collection Objects"
               variant="outlined"
               onChange={e => props.searchTerm(e)}
             />

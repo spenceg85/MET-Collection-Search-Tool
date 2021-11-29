@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {makeStyles} from '@material-ui/core/styles'
+import React, { useEffect, useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import Divider from '@material-ui/core/Divider'
@@ -62,31 +62,27 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function SearchResults(props) {
+const SearchResults = (props) => {
   const classes = useStyles()
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState(props.searchResults)
 
-  // hook to listen for changes in results prop, makes sure to re-render
-  useEffect(() => {
-    let results = []
-    results = props.searchResults
-    setResults(results)
-  }, [props.searchResults])
+    // hook to listen for changes in results prop, makes sure to re-render
+  useEffect(() => { setResults(props.searchResults) }, [props.searchResults]);
 
   // function called on map over results to return list elements
   const getListFromResults = (result, index) => {
     return (
-      <div key={result.package.name}>
+      <div key={result.objectID}>
         <ListItem alignItems="flex-start">
           <ListItemText
             className={classes.title}
             primary={
               <Link
-                href={result.package.links.npm}
+                href={result.objectWikidata_URL}
                 target="_blank"
                 color="inherit"
               >
-                <h4>{result.package.name}</h4>
+                <h4>{result.title}</h4>
               </Link>
             }
             secondary={
@@ -96,30 +92,38 @@ export default function SearchResults(props) {
                   variant="body2"
                   className={classes.inline}
                 >
-                  <p>{result.package.description}</p>
+                  <p>{result.creditLine}</p>
                   {
                     <strong>
-                      {result.package.publisher.username}
+                      <a href={result.artistULAN_URL} target={'_blank'}>
+                      {result.artistDisplayName ? result.artistDisplayName : 'Uknown Artist'} {' '} {'(' + result.artistBeginDate + ' - ' + result.artistEndDate + ')'}
+                      </a>
                     </strong>
-                  }{' '}
+                  } <strong>
+                    <br></br>
+                    Bio: </strong>{result.artistDisplayBio}
+                  {' '} 
                   {/* extras */}
                   <span>
-                    {result.score.detail &&
-                      mapScores(result.score.detail)}
+                    <a href={result.objectWikidata_URL} target={'_blank'}><img style={{height: '200px', height: '150px', float: 'right'}} src={result.primaryImageSmall}></img></a>
                   </span>
                   <p>
-                    {result.package.keywords &&
-                      result.package.keywords.length > 0 &&
-                      result.package.keywords.map(keyword =>
+                    {result.tags &&
+                      result.tags.length > 0 &&
+                      result.tags.map(keyword =>
                         mapChips(keyword)
                       )}
                   </p>
                 </Typography>
-                published {result.package.version}{' '}
+                <strong>Accession Year:</strong>{' '} {result.accessionYear}
+                <br></br>
+                <strong>Medium:</strong>{' '}{result.medium}
+                <br></br>
+                <strong>Object Date:</strong>{' '}{result.objectDate}
                 <FiberManualRecordIcon
                   className={classes.dotIcon}
                 />{' '}
-                {result.package.date.split('-')[0]}
+                Repository: {result.repository}
               </React.Fragment>
             }
           />
@@ -128,65 +132,64 @@ export default function SearchResults(props) {
       </div>
     )
   }
-
   const mapChips = keyword => {
-    let url = `https://www.npmjs.com/search?q=keywords:${keyword}`
     return (
       <Chip
-        label={keyword}
+        label={keyword.term}
         component="a"
-        href={url}
+        href={keyword.Wikidata_URL}
         target="_blank"
         clickable
       />
     )
   }
 
-  const mapScores = detail => {
-    const maintenanceScore = detail.maintenance * 10
-    const popularityScore = detail.popularity * 10
-    const qualityScore = detail.quality * 10
+  // const mapScores = detail => {
+  //   const maintenanceScore = detail.maintenance * 10
+  //   const popularityScore = detail.popularity * 10
+  //   const qualityScore = detail.quality * 10
 
-    return (
-      <div className={classes.scores}>
-        p
-        <LinearProgress
-          className={classes.popularity}
-          color="primary"
-          variant="determinate"
-          value={popularityScore}
-        />
-        q
-        <LinearProgress
-          className={classes.quality}
-          color="primary"
-          variant="determinate"
-          value={qualityScore}
-        />
-        m
-        <LinearProgress
-          className={classes.maintenance}
-          color="primary"
-          variant="determinate"
-          value={maintenanceScore}
-        />
-      </div>
-    )
-  }
+  //   return (
+  //     <div className={classes.scores}>
+  //       p
+  //       <LinearProgress
+  //         className={classes.popularity}
+  //         color="primary"
+  //         variant="determinate"
+  //         value={popularityScore}
+  //       />
+  //       q
+  //       <LinearProgress
+  //         className={classes.quality}
+  //         color="primary"
+  //         variant="determinate"
+  //         value={qualityScore}
+  //       />
+  //       m
+  //       <LinearProgress
+  //         className={classes.maintenance}
+  //         color="primary"
+  //         variant="determinate"
+  //         value={maintenanceScore}
+  //       />
+  //     </div>
+  //   )
+  // }
 
   return (
     <List className={classes.root}>
-      {results && results.length ? (
-        results.map((node, index) =>
-          getListFromResults(node, index)
-        )
-      ) : props.loading ? (
+     
+     { props.loading ? (
         <div className={classes.loading}>
           <CircularProgress color="secondary" />
         </div>
       ) : (
-        ''
+        results.map((node, index) =>
+          getListFromResults(node, index)
+        )
       )}
     </List>
   )
 }
+
+export default SearchResults;
