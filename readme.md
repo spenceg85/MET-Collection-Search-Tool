@@ -1,6 +1,6 @@
 # MET Art Collections Search Search Tool
 
-Let's get all your NPM Packages :fire:
+Let's get all your MET art from the comfort of home! :fire:
 
 Live Demo: https://METSearch.edwingrier.com
 
