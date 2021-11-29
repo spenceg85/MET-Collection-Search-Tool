@@ -2,7 +2,7 @@
 
 Let's get all your NPM Packages :fire:
 
-Live Demo: https://npm.edwingrier.com
+Live Demo: https://METSearch.edwingrier.com
 
 ## Assumptions
 
@@ -14,12 +14,12 @@ Live Demo: https://npm.edwingrier.com
 
 ## Solution formulation
 
-Steps I thought of and executed for solving the get NPM packages tool:
+Steps I thought of and executed for solving the get MET Search tool:
 
 1. App contains two child components: search.js and results.js
 2. I created a services file in my Utils folder that contains the GET fetch api call syntax and imported it into my app wherever I needed it.
 3. I added the tag Chips and made them open a new search with the tag that was clicked.
-4. Added the score bars for quality, maintenancy and popularity using the Progress component in Material-UI.
+4. Added the images as url's in src tags of <img> tags
 5. Loader is also Progress spinner from Material-UI.
 
 ## Libraries/Tools used
@@ -45,7 +45,7 @@ Run the following commands to setup, given `git` and `npm` is available:
 
 ## If it was a bigger project
 
-This is a coding challenge and scope is quite small. If it was a bigger project, doing the following would be better:
+This is an open-source side project and scope is quite small. If it was a bigger project, doing the following would be better:
 
 1. More focus on architecture and software design would be necesssary. Better project folder and component structure.
 2. Choosing typescript would be better (especially with multiple developers on team).
@@ -53,5 +53,6 @@ This is a coding challenge and scope is quite small. If it was a bigger project,
 4. If I had more time I would add better error handling and responsive design with media queries.
 5. I really wanted to add a dark mode theme using the makeStyles theme hook but I totally ran out of time, will impliment in the future probably.
 6. For a team project, it will be good to have the project dockerized.
+7. 7. Add ability to upload personal collections for users to peruse and share.
 
 Fun project!!
