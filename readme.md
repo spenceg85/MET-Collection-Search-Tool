@@ -24,6 +24,7 @@ Steps I thought of and executed for solving the get MET Search tool:
 
 ## Libraries/Tools used
 
+* The Metropolitan Museum of Art Collection API: https://metmuseum.github.io/
 * Material-UI and material-ui/icons was used for components.
 * Written in js with some ES6+ syntax.
 * Used realfavicongenerator.com for favicon.
