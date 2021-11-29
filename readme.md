@@ -1,4 +1,4 @@
-# NPM Package Search Tool
+# MET Art Collections Search Search Tool
 
 Let's get all your NPM Packages :fire:
 
